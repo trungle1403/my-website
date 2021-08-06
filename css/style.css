@@ -1,0 +1,448 @@
+html {
+  box-sizing: border-box;
+  font-family: "Courier New", Courier, monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+input,
+textarea,
+select,
+button {
+  outline: none;
+}
+
+input {
+  line-height: normal;
+}
+
+label,
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+a:hover {
+  color: #4ecdc4;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.container-fluid {
+  width: 100%;
+  height: 100%;
+  padding: 0px 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0px 10px;
+}
+
+.hover-color:hover {
+  color: #4ecdc4;
+}
+
+.btn {
+  display: inline-block;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #ddd;
+  padding: 10px 15px;
+  text-align: center;
+  border: 1px solid #ddd;
+  transition: all 0.3s linear;
+  margin: 10px 0;
+  z-index: 99;
+  overflow: hidden;
+  font-size: 18px;
+}
+
+.btn:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: currentColor;
+  width: 0;
+  height: 100%;
+  z-index: -1;
+  transition: all 0.5s linear;
+}
+
+.btn:hover:before {
+  width: 100%;
+  background-color: #ddd;
+  left: 0;
+}
+
+.btn:hover {
+  color: #000000;
+}
+
+.line:before {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background-color: #ddd;
+  transition: all 0.3s linear;
+  z-index: 99;
+}
+
+.line:hover::before {
+  width: 100%;
+  left: 0;
+}
+
+.title {
+  font-size: 170px;
+}
+
+.header {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../img/hero1.jpeg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+}
+.header .nav-bar {
+  position: fixed;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px;
+  z-index: 998;
+  transition: all 0.3s ease;
+}
+.header .nav-bar.sticky {
+  background-color: #171819;
+  box-shadow: 0px 10px 20px 0px rgba(10, 11, 12, 0.4);
+  height: 80px;
+}
+.header .nav-bar .btn-menu {
+  width: 40px;
+  height: 30px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  position: relative;
+  padding: 0px 4px;
+  display: inline-block;
+}
+.header .nav-bar .btn-menu span {
+  position: relative;
+  display: block;
+  margin-top: 5px;
+  width: 100%;
+  height: 3px;
+  background-color: #ddd;
+  transition: all 0.3s ease;
+}
+.header .nav-bar .btn-menu span:not(last-child) {
+  margin-bottom: 5px;
+}
+.header .nav-bar .btn-menu:hover span {
+  background-color: #4ecdc4;
+}
+.header .nav-bar .logo {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.header .nav-bar .logo a {
+  color: #ddd;
+}
+.header .nav-bar .logo span {
+  color: #4ecdc4;
+}
+.header .menu-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all 0.4s ease;
+  z-index: 999;
+}
+.header .menu-overlay.active {
+  width: 100%;
+}
+.header .menu-overlay.active .menu {
+  right: 0;
+}
+.header .menu-overlay .menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 250px;
+  height: 100%;
+  background-color: #000000;
+  color: #ddd;
+  transition: all 0.8s ease;
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px;
+  padding-left: 30px;
+}
+.header .menu-overlay .menu-item {
+  text-transform: uppercase;
+  font-size: 1.7rem;
+  font-weight: 600;
+  width: fit-content;
+  transition: all 0.3s ease;
+}
+.header .menu-overlay .menu-item .circle {
+  display: inline-block;
+  margin: -2px -5px 0 -10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  border: 2px solid #ddd;
+  vertical-align: middle;
+  transition: all 0.2s ease;
+}
+.header .menu-overlay .menu-item:hover .circle {
+  background-color: #ddd;
+}
+.header .menu-overlay .menu-item .line {
+  display: inline-block;
+  width: 0;
+  height: 2px;
+  transition: all 0.5s ease;
+  vertical-align: middle;
+  background-color: #ddd;
+  margin-top: -2px;
+}
+.header .menu-overlay .menu-item.active .line {
+  width: 30px;
+}
+.header .menu-overlay .menu-item:not(last-child) {
+  margin-bottom: 20px;
+}
+.header .menu-overlay .menu .btn-close {
+  position: absolute;
+  width: 40px;
+  height: 30px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  padding: 0px 4px;
+  display: inline-block;
+  top: 20px;
+  right: 20px;
+}
+.header .menu-overlay .menu .btn-close span {
+  position: relative;
+  display: block;
+  margin-top: 5px;
+  width: 100%;
+  height: 3px;
+  background-color: #ddd;
+  transition: all 0.3s ease;
+}
+.header .menu-overlay .menu .btn-close span:not(last-child) {
+  margin-bottom: 5px;
+}
+.header .menu-overlay .menu .btn-close span:first-child {
+  width: 50%;
+  transform: rotate(45deg) translate(13px, -10px);
+}
+.header .menu-overlay .menu .btn-close span:last-child {
+  width: 50%;
+  transform: rotate(-45deg) translate(13px, 10px);
+}
+.header .hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #ddd;
+}
+.header .icon-mouse {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  height: 45px;
+  width: 28px;
+  border-radius: 13px;
+  opacity: 0.8;
+}
+.header .icon-mouse .icon-scroll {
+  display: block;
+  position: relative;
+  top: 0;
+  margin: 0 auto;
+  width: 3px;
+  height: 0;
+  transition: all 0.3s ease;
+  animation: scrollIcon 2.5s linear infinite;
+  background-color: #ddd;
+}
+@keyframes scrollIcon {
+  0% {
+    top: 0;
+  }
+  40% {
+    top: 0;
+    height: 50px;
+  }
+  100% {
+    top: 50px;
+    height: 0;
+  }
+}
+
+.about {
+  position: relative;
+  width: 100%;
+  background-color: #171819;
+  min-height: 100vh;
+}
+
+.portfolio {
+  width: 100%;
+  min-height: 100vh;
+  padding: 100px 0;
+  margin: 0 auto;
+  background-color: #171819;
+}
+.portfolio .port-list {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+@media only screen and (max-width: 1024px) {
+  .portfolio .port-list {
+    flex-direction: column;
+  }
+}
+.portfolio .port-list .list-left {
+  flex: 1;
+}
+.portfolio .port-list .list-right {
+  flex: 1;
+}
+.portfolio .port-list .list-left .port-item:nth-child(2n),
+.portfolio .port-list .list-right .port-item:nth-child(2n+1) {
+  height: 350px;
+}
+.portfolio .port-list .port-item {
+  height: 450px;
+  width: 100%;
+  position: relative;
+  margin-bottom: 150px;
+  color: #ddd;
+}
+@media only screen and (max-width: 476px) {
+  .portfolio .port-list .port-item {
+    height: 300px;
+    margin-bottom: 100px;
+  }
+}
+.portfolio .port-list .port-item > a {
+  display: inline-block;
+}
+.portfolio .port-list .port-item .port-media {
+  background-color: #fff;
+  width: 60%;
+  margin-left: 20%;
+  height: 100%;
+}
+.portfolio .port-list .port-item .port-media .port-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.portfolio .port-list .port-item .port-content {
+  position: absolute;
+  width: 70%;
+  top: 30%;
+  left: 0;
+}
+@media only screen and (max-width: 1024px) {
+  .portfolio .port-list .port-item .port-content {
+    left: 5%;
+  }
+}
+.portfolio .port-list .port-item .port-content .port-category span {
+  position: relative;
+  text-transform: capitalize;
+}
+.portfolio .port-list .port-item .port-content .port-name {
+  font-size: 45px;
+  line-height: 50px;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+  font-weight: 600;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  transition: color 0.3s ease;
+}
+@media only screen and (max-width: 476px) {
+  .portfolio .port-list .port-item .port-content .port-name {
+    font-size: 30px;
+    line-height: 30px;
+  }
+}
+.portfolio .port-list .port-item .port-explore {
+  position: absolute;
+  right: 0px;
+  bottom: 50px;
+  text-transform: uppercase;
+}
+@media only screen and (max-width: 476px) {
+  .portfolio .port-list .port-item .port-explore {
+    bottom: 10px;
+  }
+}
+.portfolio .port-list .port-item .port-explore .btn {
+  font-size: 15px;
+}
+@media only screen and (max-width: 476px) {
+  .portfolio .port-list .port-item .port-explore .btn {
+    font-size: 0.8rem;
+  }
+}
+.portfolio .port-list .port-item .port-explore .dash:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -50%;
+  right: auto;
+  transform: translateY(-50%);
+  width: 50%;
+  height: 2px;
+  background-color: #ddd;
+  transition: all 0.3s ease;
+}
+
+/*# sourceMappingURL=style.css.map */

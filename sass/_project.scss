@@ -1,0 +1,120 @@
+.portfolio {
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px 0;
+    margin: 0 auto;
+    background-color: $main-bg;
+    .port-list {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        @include w-lg {
+            flex-direction: column;
+        }
+        
+        .list-left{
+            flex:1;
+        }
+        .list-right {
+            flex:1;
+        }
+        .list-left .port-item:nth-child(2n),
+        .list-right .port-item:nth-child(2n+1) {
+            height: 350px;
+        }
+        .port-item {
+            height: 450px;
+            width: 100%;
+            position: relative;
+            margin-bottom: 150px;
+            color: $c-white;
+
+            @include w-sm {
+                height: 300px;
+                margin-bottom: 100px;
+            }
+            & > a {
+                display: inline-block;
+            }
+            .port-media {
+                background-color: #fff;
+                width: 60%;
+                margin-left: 20%;
+                height: 100%;
+
+                .port-img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+            
+            .port-content {
+                position: absolute;
+                width: 70%;
+                top: 30%;
+                left:0;
+                @include w-lg {
+                    left: 5%;
+                }
+                .port-category {
+                    span {
+                        position: relative;
+                        text-transform: capitalize;
+                    }
+                }
+                .port-name {
+                    font-size: 45px;
+                    line-height: 50px;
+                    text-transform: capitalize;
+                    margin-bottom: 10px;
+                    font-weight: 600;
+                    display:-webkit-box;
+                    -webkit-line-clamp:2;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    word-break: break-word;
+                    transition: color 0.3s ease;
+                    @include w-sm {
+                        font-size: 30px;
+                        line-height: 30px;
+                    }
+                }
+            }
+
+
+            
+            .port-explore {
+                position: absolute;
+                right: 0px;
+                bottom: 50px;
+                text-transform: uppercase;
+                @include w-sm {
+                    bottom: 10px;
+                }
+                .btn {
+                    font-size: 15px;
+                    @include w-sm {
+                        font-size: .8rem;
+                    }
+                }
+
+                .dash:before {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    left: -50%;
+                    right: auto;
+                    transform: translateY(-50%);
+                    width: 50%;
+                    height: 2px;
+                    background-color: $c-white;
+                    transition: all .3s ease;
+                }
+                
+            }
+        }
+    }
+}
