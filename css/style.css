@@ -1,6 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;600&family=Roboto:wght@100;500&display=swap");
 html {
   box-sizing: border-box;
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
 }
 
@@ -120,11 +121,12 @@ img {
 .bg-text-parallax {
   font-size: 170px;
   color: transparent;
-  font-family: "futuraheavy";
+  font-family: "Roboto", sans-serif;
   text-transform: capitalize;
   letter-spacing: 3px;
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
   line-height: 220px;
+  user-select: none;
 }
 @media only screen and (max-width: 1024px) {
   .bg-text-parallax {
@@ -135,6 +137,45 @@ img {
   .bg-text-parallax {
     display: none;
   }
+}
+
+.btn-to-top {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 35px;
+  height: 35px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  display: inline-block;
+  cursor: pointer;
+  padding: 0px 4px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+.btn-to-top.active {
+  opacity: 1;
+  visibility: visible;
+}
+.btn-to-top span {
+  position: relative;
+  display: block;
+  margin-top: 5px;
+  width: 65%;
+  height: 4px;
+  background-color: #000000 !important;
+  transition: all 0.3s ease;
+  border-radius: inherit;
+}
+.btn-to-top span:last-child {
+  transform: rotate(-45deg) translate(-1px, 0px);
+}
+.btn-to-top span:not(last-child) {
+  transform: rotate(45deg) translate(14px, 0px);
+}
+.btn-to-top:hover span {
+  background-color: #4ecdc4;
 }
 
 .header {
@@ -239,7 +280,7 @@ img {
 }
 .header .menu-overlay .menu-item .circle {
   display: inline-block;
-  margin: -2px -5px 0 -10px;
+  margin: -2px 2px 0 -5px;
   width: 10px;
   height: 10px;
   border-radius: 100%;
@@ -248,6 +289,9 @@ img {
   transition: all 0.2s ease;
 }
 .header .menu-overlay .menu-item:hover .circle {
+  background-color: #ddd;
+}
+.header .menu-overlay .menu-item.active .circle {
   background-color: #ddd;
 }
 .header .menu-overlay .menu-item .line {
@@ -300,8 +344,19 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   min-height: 100vh;
   color: #ddd;
+}
+.header .hero-title {
+  font-size: 50px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  position: relative;
+  width: fit-content;
+}
+.header .hero-desc {
+  margin-bottom: 20px;
 }
 .header .icon-mouse {
   position: absolute;

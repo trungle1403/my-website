@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;600&family=Roboto:wght@100;500&display=swap');
 html {
 box-sizing: border-box;
-font-family: 'Courier New', Courier, monospace;
+font-family: 'Poppins', sans-serif;
 scroll-behavior: smooth;
 }
 *{
@@ -108,16 +109,58 @@ max-width: 100%;
 .bg-text-parallax {
     font-size: 170px;
     color: transparent;
-    font-family: "futuraheavy";
+    // font-family: "futuraheavy";
+    font-family: 'Roboto', sans-serif;
     text-transform: capitalize;
     letter-spacing: 3px;
     -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
     line-height: 220px;
+    user-select: none;
 
     @include w-lg {
         font-size: 130px;
     }
     @include w-sm {
         display: none;
+    }
+}
+
+.btn-to-top {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    display: inline-block;
+    cursor: pointer;
+    padding: 0px 4px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    span{
+        position: relative;
+        display: block;
+        margin-top: 5px;
+        width: 65%;
+        height: 4px;
+        background-color: $c-black !important;
+        transition: all 0.3s ease;
+        border-radius: inherit;
+    }
+    span:last-child{
+        transform: rotate(-45deg) translate(-1px, 0px);
+    }
+    span:not(last-child){
+        transform: rotate(45deg) translate(14px, 0px);
+    }
+
+    &:hover span {
+        background-color: $main-c;
     }
 }

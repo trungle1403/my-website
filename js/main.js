@@ -2,6 +2,7 @@ const menuOverlay = document.querySelector('.menu-overlay')
 const btnShowMenu = document.querySelector('.btn-menu')
 const btnCloseMenu = document.querySelector('.btn-close')
 const menuItem = document.querySelectorAll('.menu-item')
+const btnToTop = document.querySelector('.btn-to-top')
 
 btnShowMenu.addEventListener('click', () => {
     menuOverlay.classList.toggle('active')
@@ -37,12 +38,20 @@ document.addEventListener("DOMContentLoaded", function(event) { // <-- add this 
 
 
 
-window.addEventListener('scroll',function(){
+window.addEventListener('scroll',() => {
     var header = document.querySelector('.nav-bar');
     header.classList.toggle('sticky',window.scrollY>0);
+
+    if(window.scrollY > 200){
+        btnToTop.classList.add('active')
+    }else {
+        btnToTop.classList.remove('active')
+    }
 })
 
-
+btnToTop.addEventListener('click',() => {
+    document.documentElement.scrollTop = 0;
+})
 
 let atScroll = false;
 let parallaxTitle = document.querySelectorAll(".bg-text-parallax");

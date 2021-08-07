@@ -101,7 +101,7 @@
                 }
                 .circle {
                     display: inline-block;
-                    margin: -2px -5px 0 -10px;
+                    margin: -2px 2px 0 -5px;
                     width: 10px;
                     height: 10px;
                     border-radius:100%;
@@ -110,6 +110,9 @@
                     transition: all .2s ease;
                 }
                 &:hover .circle {
+                    background-color: $c-white;
+                }
+                &.active .circle {
                     background-color: $c-white;
                 }
 
@@ -169,8 +172,20 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        text-align: center;
         min-height: 100vh;
         color: $c-white;
+
+        &-title {
+            font-size: 50px;
+            margin: 0 auto;
+            margin-bottom: 10px;
+            position: relative;
+            width: fit-content;
+        }
+        &-desc {
+            margin-bottom: 20px;
+        }
     }
     .icon-mouse {
         position: absolute;
