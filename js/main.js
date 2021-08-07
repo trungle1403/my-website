@@ -18,11 +18,22 @@ document.body.addEventListener('click', (e) => {
         btnShowMenu.classList.toggle('active')
     }
 })
-menuItem.forEach(item => {
-    item.addEventListener('click', (i) => {
-        
-    })
-})
+
+document.addEventListener("DOMContentLoaded", function(event) { // <-- add this wrapper
+    var menuItem = document.querySelectorAll('.menu-item');
+    if (menuItem) {
+        menuItem.forEach(function(item, key){
+            item.addEventListener('click', function () {
+            item.classList.add("active");
+                menuItem.forEach(function(items, keys){
+                    if(key !== keys) {
+                        items.classList.remove('active');
+                    }
+                });
+            });
+        });
+    }
+});
 
 
 
@@ -30,3 +41,25 @@ window.addEventListener('scroll',function(){
     var header = document.querySelector('.nav-bar');
     header.classList.toggle('sticky',window.scrollY>0);
 })
+
+
+
+let atScroll = false;
+let parallaxTitle = document.querySelectorAll(".bg-text-parallax");
+
+const scrollProgress = () => {
+    atScroll = true;
+};
+
+const raf = () => {
+    if (atScroll) {
+        parallaxTitle.forEach((element, index) => {
+            element.style.transform = "translateX(" + window.scrollY / 30 + "%)";
+        });
+        atScroll = false;
+    }
+    requestAnimationFrame(raf);
+};
+
+requestAnimationFrame(raf);
+window.addEventListener("scroll", scrollProgress);
