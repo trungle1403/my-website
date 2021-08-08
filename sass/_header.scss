@@ -6,6 +6,8 @@
     background-size: cover;
     background-attachment: fixed;
     height: 100vh;
+    transition: all .3s ease;
+    position: relative;
     .nav-bar {
         position: fixed;
         width: 100%;
@@ -185,13 +187,38 @@
         }
         &-desc {
             margin-bottom: 20px;
-        }
+        } 
     }
+
+    .socials {
+        position: absolute;
+        top: 50%;
+        transform:translateY(-50%);
+        -webkit-transform:translateY(-50%);
+        left: 30px;
+        display: flex;
+        flex-direction: column;
+
+        @include w-md {
+            top: 99%;
+            -webkit-transform:translateY(-99%);
+            left: 15px;
+        }
+        i {
+            @include w-md {
+                font-size: 1.4rem;
+            }
+        }
+        
+    }
+    
+
     .icon-mouse {
         position: absolute;
         bottom: 30px;
         left: 50%;
-        transform: translateX(-50%);
+        transform: matrix(1, 0, 0, 1, -1, 0);
+        // transform: translateX(-50%);
         display: block;
         height: 45px;
         width: 28px;
@@ -208,7 +235,7 @@
             width: 3px;
             height: 0;
             transition: all 0.3s ease;
-            animation: scrollIcon 2.5s linear infinite;
+            animation: scrollIcon 2s linear infinite;
             background-color: $c-white;
         }
     }
@@ -216,6 +243,10 @@
     @keyframes scrollIcon{
         0% {
             top: 0;
+        }
+        30% {
+            top: 0;
+            height: 50px;
         }
         40% {
             top: 0;

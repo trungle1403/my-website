@@ -63,7 +63,7 @@ const scrollProgress = () => {
 const raf = () => {
     if (atScroll) {
         parallaxTitle.forEach((element, index) => {
-            element.style.transform = "translateX(" + window.scrollY / 30 + "%)";
+            element.style.transform = "translateX(" + window.scrollY / 20 + "%)";
         });
         atScroll = false;
     }
@@ -72,3 +72,24 @@ const raf = () => {
 
 requestAnimationFrame(raf);
 window.addEventListener("scroll", scrollProgress);
+
+
+const slideHeader = [
+    "../img/hero1.jpeg",
+    "https://images.unsplash.com/photo-1499084732479-de2c02d45fcc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=889&q=80",
+    "https://images.unsplash.com/photo-1611773953563-6f0fc569be58?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=889&q=80",
+    "https://images.unsplash.com/photo-1615752592661-e49b4b13dfd7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+]
+let header = document.querySelector('.header')
+let indexSlide = 0
+function changeSlideHeader() {
+    if(indexSlide == slideHeader.length){
+        indexSlide = 0
+    }
+    header.style.backgroundImage = `linear-gradient(to right,rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${slideHeader[indexSlide]})`
+    indexSlide++
+}
+setInterval(() => changeSlideHeader(), 3000)
+
+
+

@@ -1,4 +1,5 @@
 .portfolio {
+    position: relative;
     width: 100%;
     min-height: 100vh;
     padding: 50px 0;
@@ -31,8 +32,12 @@
             margin-bottom: 150px;
             color: $c-white;
 
+            @include w-md {
+                height: 500px !important;
+                margin-bottom: 100px;
+            }
             @include w-sm {
-                height: 300px;
+                height: 300px !important;
                 margin-bottom: 100px;
             }
             & > a {
@@ -48,7 +53,8 @@
                 &:hover {
                     transform: translate(-10px,-10px);
                 }
-                &::before {
+                &::before,
+                &::after {
                     content: '';
                     position: absolute;
                     top: 0;
@@ -57,9 +63,14 @@
                     left: 0;
                     width: 100%;
                     height: 100%;
+                }
+                &::before {
                     transition: all .9s ease;
                     background-color: $c-black;
                     z-index: -1;
+                }
+                &::after {
+                    background-color: rgba(0, 0, 0, 0.5);
                 }
                 &:hover::before{
                     transform: translate(15px,15px);
